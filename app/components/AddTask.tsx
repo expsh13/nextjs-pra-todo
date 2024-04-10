@@ -1,13 +1,14 @@
 "use client";
 import React, { FormEvent, useState } from "react";
 import { addTodo } from "../api/route";
+import { v4 as uuidv4 } from "uuid";
 
 export const AddTask = () => {
   const [taskTitle, setTaskTitle] = useState<string>("");
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    await addTodo({ id: 4, text: taskTitle });
+    await addTodo({ id: uuidv4(), text: taskTitle });
     setTaskTitle("");
   };
 
